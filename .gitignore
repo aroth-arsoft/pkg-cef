@@ -1,0 +1,15 @@
+/.pc/
+/cmake/
+/Debug/
+/include/
+/Release/
+/Resources/
+/tests/
+/libcef_dll/
+/obj-x86_64-linux-gnu/
+/CMakeLists.txt
+/LICENSE.txt
+/README.txt
+/cef_install.cmake
+/cef_paths.gypi
+/cef_paths2.gypi
