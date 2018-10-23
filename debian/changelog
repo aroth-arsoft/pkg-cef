@@ -1,3 +1,15 @@
+cef (3.3282.1732.g973997f-3) cosmic; urgency=medium
+
+  * add more build depends
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Tue, 23 Oct 2018 07:00:46 +0200
+
+cef (3.3282.1732.g973997f-2) cosmic; urgency=medium
+
+  * try with more libs in build env for depends
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sun, 21 Oct 2018 18:00:02 +0200
+
 cef (3.3282.1732.g973997f-1) cosmic; urgency=medium
 
   * initial release
