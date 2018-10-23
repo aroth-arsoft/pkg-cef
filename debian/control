@@ -33,7 +33,7 @@ Standards-Version: 4.1.2
 Homepage: https://bitbucket.org/chromiumembedded/cef/
 
 Package: libcef
-Architecture: i386 amd64
+Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Conflicts: libcefd
 Provides: libcef-abi-${cef:ABI}
@@ -48,7 +48,7 @@ Description: Chromium Embedded Framework
  This package contains the shared library.
 
 Package: libcefd
-Architecture: i386 amd64
+Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Conflicts: libcef
 Provides: libcef-abi-${cef:ABI}
@@ -63,7 +63,7 @@ Description: Chromium Embedded Framework - debug version
  This package contains the shared library.
 
 Package: libcef-dev
-Architecture: i386 amd64
+Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}, libcef-abi-${cef:ABI}
 Description: Chromium Embedded Framework - development files
  Chromium Embedded Framework allows third-party applications to embed
