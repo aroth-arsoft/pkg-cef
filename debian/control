@@ -64,7 +64,8 @@ Description: Chromium Embedded Framework - debug version
 
 Package: libcef-dev
 Architecture: amd64
-Depends: ${shlibs:Depends}, ${misc:Depends}, libcef-abi-${cef:ABI}
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ libcef (= ${binary:Version}) | libcefd (= ${binary:Version})
 Description: Chromium Embedded Framework - development files
  Chromium Embedded Framework allows third-party applications to embed
  the Chromium web browser. CEF insulates the user from the underlying Chromium
