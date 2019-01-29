@@ -1,3 +1,9 @@
+cef (3.3578.1867.g0f6d65a-1) cosmic; urgency=medium
+
+  * new CEF version 3.3578.1867.g0f6d65a, chromium version 71
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Tue, 29 Jan 2019 19:21:50 +0100
+
 cef (3.3282.1732.g973997f-7) cosmic; urgency=medium
 
   * add one more symlink for include dir
