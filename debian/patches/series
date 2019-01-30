@@ -1,1 +1,2 @@
 do-cmake-install
+fix-cfi-icall-attribute
