@@ -1,6 +1,6 @@
 --- /dev/null
 +++ b/cef_install.cmake
-@@ -0,0 +1,113 @@
+@@ -0,0 +1,111 @@
 +FUNCTION(CEF_GENERATE_DEBUG_LIB)
 +
 +    set(CEF_DIR ${CMAKE_SOURCE_DIR})
@@ -31,7 +31,6 @@
 +    install(FILES
 +        ${_cef_rel_dir}/libEGL.so
 +        ${_cef_rel_dir}/libGLESv2.so
-+        ${_cef_rel_dir}/libwidevinecdmadapter.so
 +        # Only required for setuid sandboxes
 +        # See https://code.google.com/p/chromium/wiki/LinuxSandboxing#The_setuid_sandbox
 +        ${_cef_rel_dir}/chrome-sandbox
@@ -49,7 +48,6 @@
 +    install(FILES
 +        ${_cef_dbg_dir}/libEGL.so
 +        ${_cef_dbg_dir}/libGLESv2.so
-+        ${_cef_dbg_dir}/libwidevinecdmadapter.so
 +        # Only required for setuid sandboxes
 +        # See https://code.google.com/p/chromium/wiki/LinuxSandboxing#The_setuid_sandbox
 +        ${_cef_dbg_dir}/chrome-sandbox
@@ -104,7 +102,7 @@
 +            DESTINATION
 +                src/cef
 +            )
-+    message(STATUS "ins ${CMAKE_CURRENT_BINARY_DIR}/libcef_dll_wrapper/libcef_dll_wrapper.a")
++    #message(STATUS "ins ${CMAKE_CURRENT_BINARY_DIR}/libcef_dll_wrapper/libcef_dll_wrapper.a")
 +    install(FILES
 +                ${CMAKE_CURRENT_BINARY_DIR}/libcef_dll_wrapper/libcef_dll_wrapper.a
 +            DESTINATION
