@@ -1,3 +1,9 @@
+cef (78.3.4+ge17bba6+chromium-78.0.3904.108-0.1) eoan; urgency=medium
+
+  * CEF 78.3.4+ge17bba6+chromium-78.0.3904.108
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 23 Nov 2019 13:32:25 +0100
+
 cef (3.3578.1867.g0f6d65a-4) cosmic; urgency=medium
 
   * adjust depends for CEF version
