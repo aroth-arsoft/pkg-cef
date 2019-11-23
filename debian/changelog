@@ -1,3 +1,9 @@
+cef (78.3.4+ge17bba6-0.2) eoan; urgency=medium
+
+  * add missing icudtl.dat
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 23 Nov 2019 17:44:19 +0100
+
 cef (78.3.4+ge17bba6-0.1) eoan; urgency=medium
 
   * CEF 78.3.4+ge17bba6+chromium-78.0.3904.108
