@@ -1,3 +1,21 @@
+cef (78.3.4+ge17bba6-0.5) eoan; urgency=medium
+
+  * fix install location for debug libs
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Tue, 17 Dec 2019 07:23:01 +0100
+
+cef (78.3.4+ge17bba6-0.4) eoan; urgency=medium
+
+  * rebuild 
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 14 Dec 2019 14:34:57 +0100
+
+cef (78.3.4+ge17bba6-0.3) eoan; urgency=medium
+
+  * try to create debug packages
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 14 Dec 2019 13:29:01 +0100
+
 cef (78.3.4+ge17bba6-0.2) eoan; urgency=medium
 
   * add missing icudtl.dat
