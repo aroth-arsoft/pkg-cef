@@ -1,3 +1,9 @@
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-1) focal; urgency=medium
+
+  * new upstream release 87.1.11+g8bb7705+chromium-87.0.4280.66
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Mon, 30 Nov 2020 06:57:29 +0100
+
 cef (78.3.4+ge17bba6-0.6) focal; urgency=medium
 
   * rebuild for focal
@@ -12,7 +18,7 @@ cef (78.3.4+ge17bba6-0.5) eoan; urgency=medium
 
 cef (78.3.4+ge17bba6-0.4) eoan; urgency=medium
 
-  * rebuild 
+  * rebuild
 
  -- Andreas Roth <aroth@arsoft-online.com>  Sat, 14 Dec 2019 14:34:57 +0100
 
@@ -66,7 +72,7 @@ cef (3.3282.1732.g973997f-7) cosmic; urgency=medium
 
 cef (3.3282.1732.g973997f-6) cosmic; urgency=medium
 
-  * rebuild with fixed patchelf 
+  * rebuild with fixed patchelf
 
  -- Andreas Roth <aroth@arsoft-online.com>  Thu, 25 Oct 2018 06:29:08 +0200
 
