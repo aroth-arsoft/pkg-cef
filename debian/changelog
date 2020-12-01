@@ -1,3 +1,9 @@
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2) focal; urgency=medium
+
+  * fix missing files in install
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Tue, 01 Dec 2020 07:23:40 +0100
+
 cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-1) focal; urgency=medium
 
   * new upstream release 87.1.11+g8bb7705+chromium-87.0.4280.66

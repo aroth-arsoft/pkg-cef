@@ -34,9 +34,10 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 njobs=-j$(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 endif
 
-CEF_ABI := $(shell cat include/cef_version.h | sed -n 's/#define CEF_VERSION_MAJOR \([0-9]*\).*/\1/p')
+CEF_ABI := $(shell awk '/\#define CEF_VERSION_MAJOR/ { print $$3 }' include/cef_version.h )
 
 %:
+	echo "CEF_ABI=$(CEF_ABI)"
 	 dh $@ --buildsystem=cmake
 
 override_dh_clean:
