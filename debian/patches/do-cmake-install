@@ -1,6 +1,6 @@
 --- /dev/null
 +++ b/cef_install.cmake
-@@ -0,0 +1,126 @@
+@@ -0,0 +1,127 @@
 +FUNCTION(CEF_GENERATE_RELEASE_LIB)
 +
 +    set(CEF_DIR ${CMAKE_SOURCE_DIR})
@@ -14,7 +14,7 @@
 +                        )
 +    ENDIF()
 +
-+ENDFUNCTION(CEF_GENERATE_DEBUG_LIB)
++ENDFUNCTION(CEF_GENERATE_RELEASE_LIB)
 +
 +FUNCTION(CEF_GENERATE_DEBUG_LIB)
 +
@@ -125,6 +125,7 @@
 +        )
 +ENDFUNCTION(CEF_INSTALL_FILES)
 +
++CEF_GENERATE_RELEASE_LIB()
 +CEF_GENERATE_DEBUG_LIB()
 +CEF_INSTALL_FILES()
 --- a/CMakeLists.txt

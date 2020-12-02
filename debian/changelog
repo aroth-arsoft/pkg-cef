@@ -1,3 +1,10 @@
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.1) focal; urgency=medium
+
+  * put resource files into extra package
+  * generate renamed release library
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Wed, 02 Dec 2020 06:38:17 +0100
+
 cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2) focal; urgency=medium
 
   * fix missing files in install
