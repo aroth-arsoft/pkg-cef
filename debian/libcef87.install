@@ -1,4 +1,3 @@
-#!/usr/bin/dh-exec
 usr/lib/libcef${CEF_ABI}.so usr/lib/${DEB_BUILD_MULTIARCH}/
 usr/lib/cef.rel/chrome-sandbox usr/lib/${DEB_BUILD_MULTIARCH}/
 usr/lib/cef.rel/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/cef${CEF_ABI}/

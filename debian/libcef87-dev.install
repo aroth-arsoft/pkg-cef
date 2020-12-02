@@ -1,6 +1,5 @@
-#!/usr/bin/dh-exec
 usr/include/* usr/include/${DEB_BUILD_MULTIARCH}/cef${CEF_ABI}
-usr/src/cef/CMakeLists.txt /usr/src/cef${CEF_ABI}/
-usr/src/cef/cmake/* usr/src/cef${CEF_ABI}/cmake/
-usr/src/cef/libcef_dll/* /usr/src/cef${CEF_ABI}/libcef_dll/
-usr/lib/libcef_dll_wrapper.a usr/lib/${DEB_BUILD_MULTIARCH}/libcef${CEF_ABI}_dll_wrapper.a
+usr/src/cef/CMakeLists.txt /usr/src/cef${CEF_ABI}
+usr/src/cef/cmake/* usr/src/cef${CEF_ABI}/cmake
+usr/src/cef/libcef_dll/* /usr/src/cef${CEF_ABI}/libcef_dll
+usr/lib/libcef${CEF_ABI}_dll_wrapper.a usr/lib/${DEB_BUILD_MULTIARCH}

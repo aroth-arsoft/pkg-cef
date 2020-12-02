@@ -1,6 +1,6 @@
 --- /dev/null
 +++ b/cef_install.cmake
-@@ -0,0 +1,127 @@
+@@ -0,0 +1,129 @@
 +FUNCTION(CEF_GENERATE_RELEASE_LIB)
 +
 +    set(CEF_DIR ${CMAKE_SOURCE_DIR})
@@ -117,9 +117,11 @@
 +            DESTINATION
 +                src/cef
 +            )
-+    #message(STATUS "ins ${CMAKE_CURRENT_BINARY_DIR}/libcef_dll_wrapper/libcef_dll_wrapper.a")
++
 +    install(FILES
 +                ${CMAKE_CURRENT_BINARY_DIR}/libcef_dll_wrapper/libcef_dll_wrapper.a
++            RENAME
++                libcef${CEF_ABI}_dll_wrapper.a
 +            DESTINATION
 +                lib
 +        )
