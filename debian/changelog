@@ -1,3 +1,9 @@
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.5) focal; urgency=medium
+
+  * another try
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Thu, 03 Dec 2020 07:24:06 +0100
+
 cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.4) focal; urgency=medium
 
   * try to pass env variable
