@@ -67,4 +67,34 @@ override_dh_auto_install:
 	CEF_ABI=$(CEF_ABI) dh_auto_install --buildsystem=cmake
 
 override_dh_install:
-	CEF_ABI=$(CEF_ABI) dh_install -O--buildsystem=cmake
+	echo "Generate debian/libcef$(CEF_ABI).install"
+	echo "usr/lib/libcef$(CEF_ABI).so usr/lib/${DEB_BUILD_MULTIARCH}/" > debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/chrome-sandbox usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/swiftshader/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/swiftshader/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/swiftshader/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/swiftshader/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/*.bin usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/icudtl.dat usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI).install
+
+	echo "Generate debian/libcef$(CEF_ABI)d.install"
+	echo "usr/lib/libcef$(CEF_ABI)d.so usr/lib/${DEB_BUILD_MULTIARCH}/" > debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/chrome-sandbox usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/swiftshader/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/swiftshader/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/swiftshader/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/swiftshader/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/*.bin usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/icudtl.dat usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI)d.install
+
+	echo "Generate debian/libcef$(CEF_ABI)-dev.install"
+	echo "usr/include/* usr/include/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)" > debian/libcef$(CEF_ABI)-dev.install
+	echo "usr/src/cef/CMakeLists.txt /usr/src/cef$(CEF_ABI)" >> debian/libcef$(CEF_ABI)-dev.install
+	echo "usr/src/cef/cmake/* usr/src/cef$(CEF_ABI)/cmake" >> debian/libcef$(CEF_ABI)-dev.install
+	echo "usr/src/cef/libcef_dll/* /usr/src/cef$(CEF_ABI)/libcef_dll" >> debian/libcef$(CEF_ABI)-dev.install
+	echo "usr/lib/libcef$(CEF_ABI)_dll_wrapper.a usr/lib/${DEB_BUILD_MULTIARCH}" >> debian/libcef$(CEF_ABI)-dev.install
+
+	echo "Generate debian/libcef$(CEF_ABI)-data.install"
+	echo "usr/share/cef/Resources/* usr/share/cef$(CEF_ABI)/Resources/" > debian/libcef$(CEF_ABI)-data.install
+
+	dh_install -O--buildsystem=cmake
