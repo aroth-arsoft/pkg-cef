@@ -42,7 +42,8 @@ CEF_ABI := $(shell awk '/\#define CEF_VERSION_MAJOR/ { print $$3 }' include/cef_
 
 override_dh_clean:
 	dh_clean
-	-rm -f Debug/libcef*d.so
+	-rm -f Release/libcef$(CEF_ABI).so
+	-rm -f Debug/libcef$(CEF_ABI)d.so
 	-rm -rf build
 
 override_dh_auto_configure:
@@ -54,9 +55,9 @@ override_dh_auto_configure:
 # Regular shlibs won't work for libcef.so, since it has no versions in its soname,
 # so we simply make a symbols file mapping every symbol to libcef-abi-$HASH (unversioned).
 override_dh_makeshlibs:
-	echo "libcef87.so libcef-abi-$(CEF_ABI)" > debian/libcef$(CEF_ABI).symbols
+	echo "libcef$(CEF_ABI).so libcef-abi-$(CEF_ABI)" > debian/libcef$(CEF_ABI).symbols
 	echo ' (regex)".*" 0' >> debian/libcef$(CEF_ABI).symbols
-	echo "libcef87d.so libcef-abi-$(CEF_ABI)" > debian/libcef$(CEF_ABI)d.symbols
+	echo "libcef$(CEF_ABI)d.so libcef-abi-$(CEF_ABI)" > debian/libcef$(CEF_ABI)d.symbols
 	echo ' (regex)".*" 0' >> debian/libcef$(CEF_ABI)d.symbols
 	dh_makeshlibs -XlibEGL.so -XlibGLESv2.so
 
@@ -68,24 +69,24 @@ override_dh_auto_install:
 
 override_dh_install:
 	echo "Generate debian/libcef$(CEF_ABI).install"
-	echo "usr/lib/libcef$(CEF_ABI).so usr/lib/${DEB_BUILD_MULTIARCH}/" > debian/libcef$(CEF_ABI).install
-	echo "usr/lib/cef.rel/chrome-sandbox usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/libcef$(CEF_ABI).so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" > debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/chrome-sandbox usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI).install
 	echo "usr/lib/cef.rel/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI).install
 	echo "usr/lib/cef.rel/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI).install
-	echo "usr/lib/cef.rel/swiftshader/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/swiftshader/" >> debian/libcef$(CEF_ABI).install
-	echo "usr/lib/cef.rel/swiftshader/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/swiftshader/" >> debian/libcef$(CEF_ABI).install
-	echo "usr/lib/cef.rel/*.bin usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI).install
-	echo "usr/lib/cef.rel/icudtl.dat usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/swiftshader/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/swiftshader/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/swiftshader/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/swiftshader/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/*.bin usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI).install
+	echo "usr/lib/cef.rel/icudtl.dat usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI).install
 
 	echo "Generate debian/libcef$(CEF_ABI)d.install"
-	echo "usr/lib/libcef$(CEF_ABI)d.so usr/lib/${DEB_BUILD_MULTIARCH}/" > debian/libcef$(CEF_ABI)d.install
-	echo "usr/lib/cef.dbg/chrome-sandbox usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/libcef$(CEF_ABI)d.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" > debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/chrome-sandbox usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI)d.install
 	echo "usr/lib/cef.dbg/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI)d.install
 	echo "usr/lib/cef.dbg/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI)d.install
-	echo "usr/lib/cef.dbg/swiftshader/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/swiftshader/" >> debian/libcef$(CEF_ABI)d.install
-	echo "usr/lib/cef.dbg/swiftshader/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/swiftshader/" >> debian/libcef$(CEF_ABI)d.install
-	echo "usr/lib/cef.dbg/*.bin usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI)d.install
-	echo "usr/lib/cef.dbg/icudtl.dat usr/lib/${DEB_BUILD_MULTIARCH}/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/swiftshader/libEGL.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/swiftshader/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/swiftshader/libGLESv2.so usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/swiftshader/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/*.bin usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI)d.install
+	echo "usr/lib/cef.dbg/icudtl.dat usr/lib/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)/" >> debian/libcef$(CEF_ABI)d.install
 
 	echo "Generate debian/libcef$(CEF_ABI)-dev.install"
 	echo "usr/include/* usr/include/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)" > debian/libcef$(CEF_ABI)-dev.install

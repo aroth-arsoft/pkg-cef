@@ -6,3 +6,4 @@
 /debhelper-build-stamp
 /.debhelper/
 /libcef*/
+/libcef*.install
