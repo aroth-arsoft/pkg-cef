@@ -38,7 +38,7 @@ CEF_ABI := $(shell awk '/\#define CEF_VERSION_MAJOR/ { print $$3 }' include/cef_
 
 %:
 	echo "CEF_ABI=$(CEF_ABI)"
-	 dh $@ --buildsystem=cmake
+	CEF_ABI=$(CEF_ABI) dh $@ --buildsystem=cmake
 
 override_dh_clean:
 	dh_clean
@@ -62,3 +62,6 @@ override_dh_makeshlibs:
 
 override_dh_gencontrol:
 	dh_gencontrol -- -Vcef:ABI=$(CEF_ABI)
+
+override_dh_auto_install:
+	CEF_ABI=$(CEF_ABI) dh_auto_install --buildsystem=cmake
