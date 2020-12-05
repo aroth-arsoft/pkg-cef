@@ -1,6 +1,6 @@
 --- /dev/null
 +++ b/cef_install.cmake
-@@ -0,0 +1,129 @@
+@@ -0,0 +1,135 @@
 +FUNCTION(CEF_GENERATE_RELEASE_LIB)
 +
 +    set(CEF_DIR ${CMAKE_SOURCE_DIR})
@@ -39,6 +39,7 @@
 +    set(_cef_dbg_dir ${CEF_DIR}/Debug)
 +    set(_cef_src_dir ${CEF_DIR}/libcef_dll)
 +    set(_cef_cmake_dir ${CEF_DIR}/cmake)
++    set(_cef_cmake_config_dir ${CEF_DIR}/cmake-config)
 +
 +    install(DIRECTORY ${CEF_DIR}/include DESTINATION .)
 +    install(FILES ${_cef_rel_dir}/libcef${CEF_ABI}.so ${_cef_dbg_dir}/libcef${CEF_ABI}d.so DESTINATION lib)
@@ -112,6 +113,11 @@
 +            DESTINATION
 +                src/cef
 +            )
++    install(DIRECTORY
++                ${_cef_cmake_config_dir}
++            DESTINATION
++                src
++            )
 +    install(FILES
 +                ${CEF_DIR}/CMakeLists.txt
 +            DESTINATION
@@ -150,3 +156,109 @@
  PRINT_CEF_CONFIG()
 +
 +include(cef_install.cmake)
+--- /dev/null
++++ b/cmake-config/CEF/CEFConfig.cmake
+@@ -0,0 +1,56 @@
++
++message("CEFConfig.cmake v=${CEF_VERSION} ${CEF_VERSION_MAJOR}, ${CEF_INCLUDE_DIR}")
++
++#set(CEF_INCLUDE_DIR "/usr/include/x86_64-linux-gnu/cef87")
++set(_cef_install_prefix "/usr")
++set(CEF_INCLUDE_DIR "/usr/include/${CMAKE_LIBRARY_ARCHITECTURE}/cef${CEF_VERSION_MAJOR}" CACHE PATH "CEF ${CEF_VERSION_MAJOR} include directory")
++set(CEF_LIBRARY_DIR "/usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/cef${CEF_VERSION_MAJOR}" CACHE PATH "CEF ${CEF_VERSION_MAJOR} library directory")
++set(CEF_RESOURCE_DIR "/usr/share/cef${CEF_VERSION_MAJOR}/Resources" CACHE PATH "CEF ${CEF_VERSION_MAJOR} resource file directory")
++set(CEF_LOCALES_DIR "${CEF_RESOURCE_DIR}/locales" CACHE PATH "CEF ${CEF_VERSION_MAJOR} locales files directory")
++
++add_library(libcef_wrapper_library STATIC IMPORTED)
++set_property(TARGET libcef_wrapper_library PROPERTY IMPORTED_LOCATION "/usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/libcef87_dll_wrapper.a")
++set_property(TARGET libcef_wrapper_library PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CEF_INCLUDE_DIR})
++set_property(TARGET libcef_wrapper_library PROPERTY INTERFACE_COMPILE_DEFINITIONS
++    CEF_RESOURCE_DIR=\"${CEF_RESOURCE_DIR}\"
++    CEF_LOCALES_DIR=\"${CEF_LOCALES_DIR}\"
++    CEF_LIBRARY_DIR=\"${CEF_LIBRARY_DIR}\"
++    CEF_INCLUDE_DIR=\"${CEF_INCLUDE_DIR}\"
++    )
++
++set_property(TARGET libcef_wrapper_library PROPERTY
++    INTERFACE_LINK_LIBRARIES libcef)
++
++macro(_cef_check_lib _path _name _basename)
++    if(EXISTS "${CEF_LIBRARY_DIR}/${_basename}")
++        set(${_path} "${CEF_LIBRARY_DIR}/${_basename}")
++        set(${_name} "${_basename}")
++    else()
++        set(${_path})
++        set(${_name})
++    endif()
++endmacro()
++
++_cef_check_lib(_cef_debug_location _cef_debug_soname "libcef${CEF_VERSION_MAJOR}d.so")
++_cef_check_lib(_cef_release_location _cef_release_soname "libcef${CEF_VERSION_MAJOR}.so")
++if(NOT _cef_debug_location)
++    set(_cef_debug_location ${_cef_release_location})
++    set(_cef_debug_soname ${_cef_release_soname})
++endif()
++if(NOT _cef_release_location)
++    set(_cef_release_location ${_cef_debug_location})
++    set(_cef_release_soname ${_cef_debug_soname})
++endif()
++
++add_library(libcef SHARED IMPORTED)
++set_property(TARGET libcef PROPERTY INTERFACE_LINK_LIBRARIES X11)
++set_property(TARGET libcef APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG RELEASE)
++set_target_properties(libcef PROPERTIES
++    "IMPORTED_LOCATION_RELEASE" ${_cef_release_location}
++    "IMPORTED_SONAME_RELEASE" ${_cef_release_soname}
++    "IMPORTED_LOCATION_DEBUG" ${_cef_debug_location}
++    "IMPORTED_SONAME_DEBUG" ${_cef_debug_soname}
++)
++
++set_property(TARGET libcef PROPERTY INSTALL_RPATH "$ORIGIN;${CEF_LIBRARY_DIR}")
++set_property(TARGET libcef PROPERTY BUILD_WITH_INSTALL_RPATH TRUE)
+--- /dev/null
++++ b/cmake-config/CEF/CEFConfigVersion.cmake
+@@ -0,0 +1,44 @@
++
++if(NOT PACKAGE_FIND_VERSION)
++    set(PACKAGE_FIND_VERSION 87)
++endif()
++
++set(_cef_version_major ${PACKAGE_FIND_VERSION})
++
++#message("CEFConfigVersion.cmake ${CMAKE_LIBRARY_ARCHITECTURE} ${PACKAGE_VERSION} ${PACKAGE_FIND_VERSION}")
++
++set(CEF_INCLUDE_DIR "/usr/include/${CMAKE_LIBRARY_ARCHITECTURE}/cef${_cef_version_major}")
++set(CEF_LIBRARY_DIR "/usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/cef${_cef_version_major}")
++
++#message("CEF_INCLUDE_DIR=${CEF_INCLUDE_DIR}")
++#message("CEF_LIBRARY_DIR=${CEF_LIBRARY_DIR}")
++
++if(EXISTS "${CEF_INCLUDE_DIR}/include/cef_version.h")
++    file (READ "${CEF_INCLUDE_DIR}/include/cef_version.h" _cef_version_header_contents)
++    if(_cef_version_header_contents)
++        string (REGEX MATCH "CEF_VERSION[ \t]+\"([0-9a-z\\+\\.\\-]+)\"" CEF_VERSION ${_cef_version_header_contents})
++        #set(CEF_VERSION ${CMAKE_MATCH_1} CACHE STRING "CEF version")
++        set(CEF_VERSION ${CMAKE_MATCH_1})
++        string (REGEX MATCH "CEF_VERSION_MAJOR[ \t]+([0-9]+)" CEF_VERSION_MAJOR ${_cef_version_header_contents})
++        string (REGEX MATCH "CEF_VERSION_MINOR[ \t]+([0-9]+)" CEF_VERSION_MINOR ${_cef_version_header_contents})
++        string (REGEX MATCH "CEF_VERSION_PATCH[ \t]+([0-9]+)" CEF_VERSION_PATCH ${_cef_version_header_contents})
++        string (REGEX MATCH "CEF_COMMIT_NUMBER[ \t]+([0-9]+)" CEF_COMMIT_NUMBER ${_cef_version_header_contents})
++        string (REGEX MATCH "CEF_COMMIT_HASH[ \t]+\"([0-9a-f]+)\"" CEF_COMMIT_HASH ${_cef_version_header_contents})
++    endif()
++endif()
++
++if(EXISTS "${CEF_INCLUDE_DIR}" AND EXISTS "${CEF_LIBRARY_DIR}")
++    set(PACKAGE_VERSION ${CEF_VERSION})
++    message("Found CEF ${PACKAGE_VERSION}")
++endif()
++
++
++if(PACKAGE_VERSION VERSION_LESS PACKAGE_FIND_VERSION)
++    message("version mismatch")
++    set(PACKAGE_VERSION_COMPATIBLE FALSE)
++else()
++    set(PACKAGE_VERSION_COMPATIBLE TRUE)
++    if(PACKAGE_FIND_VERSION STREQUAL PACKAGE_VERSION)
++        set(PACKAGE_VERSION_EXACT TRUE)
++    endif()
++endif()

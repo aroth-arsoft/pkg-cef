@@ -92,6 +92,7 @@ override_dh_install:
 	echo "usr/include/* usr/include/${DEB_BUILD_MULTIARCH}/cef$(CEF_ABI)" > debian/libcef$(CEF_ABI)-dev.install
 	echo "usr/src/cef/CMakeLists.txt /usr/src/cef$(CEF_ABI)" >> debian/libcef$(CEF_ABI)-dev.install
 	echo "usr/src/cef/cmake/* usr/src/cef$(CEF_ABI)/cmake" >> debian/libcef$(CEF_ABI)-dev.install
+	echo "usr/src/cmake-config/** /usr/lib/${DEB_BUILD_MULTIARCH}/cmake/" >> debian/libcef$(CEF_ABI)-dev.install
 	echo "usr/src/cef/libcef_dll/* /usr/src/cef$(CEF_ABI)/libcef_dll" >> debian/libcef$(CEF_ABI)-dev.install
 	echo "usr/lib/libcef$(CEF_ABI)_dll_wrapper.a usr/lib/${DEB_BUILD_MULTIARCH}" >> debian/libcef$(CEF_ABI)-dev.install
 
