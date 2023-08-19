@@ -1,3 +1,15 @@
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.8) jammy; urgency=medium
+
+  * add libxdamage1 as depend
+
+ -- aroth <aroth@aro-neon.comet.arsoft.co>  Sat, 19 Aug 2023 13:40:38 +0200
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.7) focal; urgency=medium
+
+  * add libxkbcommon0 as depend
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sun, 06 Dec 2020 08:31:24 +0100
+
 cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.6) focal; urgency=medium
 
   * include cmake modules to find CEF
