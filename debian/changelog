@@ -1,3 +1,64 @@
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.8) jammy; urgency=medium
+
+  * add libxdamage1 as depend
+
+ -- aroth <aroth@aro-neon.comet.arsoft.co>  Sat, 19 Aug 2023 13:40:38 +0200
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.7) focal; urgency=medium
+
+  * add libxkbcommon0 as depend
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sun, 06 Dec 2020 08:31:24 +0100
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.6) focal; urgency=medium
+
+  * include cmake modules to find CEF
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 05 Dec 2020 14:25:49 +0100
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.5) focal; urgency=medium
+
+  * another try
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Thu, 03 Dec 2020 07:24:06 +0100
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.4) focal; urgency=medium
+
+  * try to pass env variable
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Thu, 03 Dec 2020 07:00:15 +0100
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.3) focal; urgency=medium
+
+  * pass missing variable
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Wed, 02 Dec 2020 07:44:29 +0100
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.2) focal; urgency=medium
+
+  * drop dh-exec
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Wed, 02 Dec 2020 07:18:19 +0100
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.1) focal; urgency=medium
+
+  * put resource files into extra package
+  * generate renamed release library
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Wed, 02 Dec 2020 06:38:17 +0100
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2) focal; urgency=medium
+
+  * fix missing files in install
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Tue, 01 Dec 2020 07:23:40 +0100
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-1) focal; urgency=medium
+
+  * new upstream release 87.1.11+g8bb7705+chromium-87.0.4280.66
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Mon, 30 Nov 2020 06:57:29 +0100
+
 cef (78.3.4+ge17bba6-0.6) focal; urgency=medium
 
   * rebuild for focal
@@ -12,7 +73,7 @@ cef (78.3.4+ge17bba6-0.5) eoan; urgency=medium
 
 cef (78.3.4+ge17bba6-0.4) eoan; urgency=medium
 
-  * rebuild 
+  * rebuild
 
  -- Andreas Roth <aroth@arsoft-online.com>  Sat, 14 Dec 2019 14:34:57 +0100
 
@@ -66,7 +127,7 @@ cef (3.3282.1732.g973997f-7) cosmic; urgency=medium
 
 cef (3.3282.1732.g973997f-6) cosmic; urgency=medium
 
-  * rebuild with fixed patchelf 
+  * rebuild with fixed patchelf
 
  -- Andreas Roth <aroth@arsoft-online.com>  Thu, 25 Oct 2018 06:29:08 +0200
 
