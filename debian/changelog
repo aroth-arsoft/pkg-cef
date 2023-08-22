@@ -1,8 +1,20 @@
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.10) jammy; urgency=medium
+
+  * rebuild
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Tue, 22 Aug 2023 15:06:32 +0200
+
+cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.9) jammy; urgency=medium
+
+  * try to fix include dir
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Tue, 22 Aug 2023 13:45:34 +0200
+
 cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.8) jammy; urgency=medium
 
   * add libxdamage1 as depend
 
- -- aroth <aroth@aro-neon.comet.arsoft.co>  Sat, 19 Aug 2023 13:40:38 +0200
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 19 Aug 2023 13:40:38 +0200
 
 cef87 (87.1.11+g8bb7705+chromium-87.0.4280.66-2.7) focal; urgency=medium
 
